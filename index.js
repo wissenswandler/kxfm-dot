@@ -1,5 +1,5 @@
 /*
- * lightweight KTS lib (no dependencies)
+ * lightweight KTS micro library (no dependencies)
  */
 
 export default class KTS4Dot
@@ -17,39 +17,33 @@ static preprocess(dot_string)
         ,
         `$1
 graph [
-    color=whitesmoke
-    fontname=Helvetica
-    labelloc=b
-    rankdir=BT
-    remincross=true
-    splines=true
-    style="filled,rounded"
-    target=details
-    tooltip=""
+ color=whitesmoke       # KTS style
+ fontname=Helvetica     # KTS style
+ labelloc=b
+ rankdir=BT             # KTS style
+ remincross=true
+ splines=true
+ style="filled,rounded" # KTS style
+ tooltip=" "  # prevent DOT default of graph's name/label
 ]
 node [ id="\\N"
-    fillcolor=white
-    fontname=Helvetica
-    height=0
-    shape=box
-    style="filled,rounded"
-    target=details
-    tooltip=""
-    width=0
+ fillcolor=white # opaque nodes on top of colored clusters in background
+ fontname=Helvetica     # KTS style - node's fillcolor is not inherited
+ height=0
+ shape=box              # KTS style
+ style="filled,rounded" # KTS style
+ width=0
+ tooltip=" "  # prevent DOT defaults of edge's label (might be a table)
 ]
-edge [ id="\\T___\\H"
-    arrowtail=none
-    color=forestgreen
-    dir=both
-    fontsize=10
-    penwidth=2
-    target=details
-    tooltip=" "
-	 labeltooltip=" "
-	  headtooltip=" "     
-	  tailtooltip=" "
+edge [ id="\\T___\\H"   # KTS contract for graph traversal
+ arrowtail=none # prevent DOT default of a tail that looks like an arrowhead, in case of dir=both
+ color=forestgreen
+ dir=both               # convenience for defining arrow tails (attribute not needed there)
+ # font family may by a serif one by default (better visual contrast between node and edge labels)
+ fontsize=10            # KTS style
+ penwidth=2             # green lines are easier to see when drawn thicker
 ]
-`		);
+`	);
 };
 
 /*
